@@ -1,0 +1,127 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+
+<html>
+<head>
+
+    <style>
+        body {
+            background-image: url('../../Images/Background.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .card {
+            transform: translate(50%,40%);
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6">
+
+                <div class="card shadow">
+                    <div class="card-header pt-7">
+                        <table style="width:100%">
+                            <tr>
+                                <td>     <h2 class="pt-2" style="text-align:center;">Login</h2></td>
+
+                            </tr>
+
+                        </table>
+
+                    </div>
+
+
+                    @using (Html.BeginForm("Login", "Home"))
+                    {
+
+                        <div class="card-body">
+
+                            <!-- Table -->
+                            <div class="row">
+                                <div class="col">
+                                    <div class="row">
+                                        <div class="col-4" style="text-align:right;">
+                                            <label class="fs-7 fw-semibold form-label">
+                                                <span data-bs-toggle="tooltip" title="Enter Username">Username</span>
+
+                                            </label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input style="border:groove;" placeholder="Enter Your Username" autocomplete="off" class="form-control form-control-sm" id="Username" name="Username" required="required" type="text" value="" />
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="row mt-3">
+                                        <div class="col-4" style="text-align:right;">
+                                            <label class="fs-7 fw-semibold form-label">
+                                                <span data-bs-toggle="tooltip" title="Enter Password">Password</span>
+
+                                            </label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input style="border:groove;" placeholder="Enter Your Password" autocomplete="off" class="form-control form-control-sm" id="Password" name="Password" required="required" type="password" value="" onkeyup="CheckPass()" />
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+
+
+
+
+                            <div class=" row mt-5">
+                                <div class="col-12 text-center">
+                                    <input type="submit" class="btn btn-outline-primary" value="Log In" />
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    @section scripts
+    {
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        @if (ViewBag.alertlogin != null)
+        {
+
+            var data_status = ViewBag.alertlogin;
+            <script type="text/javascript">
+                $(function () {
+                    Swal.fire(
+                        'Error',
+                        'Wrong Credentials',
+                        'error'
+                    )
+                });
+            </script>
+        }
+    }
+</body>
+
+</html>
+
+
+
+
+
